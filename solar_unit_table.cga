@@ -1,0 +1,179 @@
+// Auther - Nitesh B.
+// GIT - https://github.com/niteshbagde
+
+
+// Attributes Definition
+
+#dimentions are in meters
+circle_sides = 24
+
+// desin for spun pile
+attr spun_pile_radious = 0.3
+attr pile_height = 3.495
+
+attr column_hight = 1.027
+attr column_radious = 0.15
+
+
+// design for bracings
+attr bracing_width = 6
+attr bracing_height = 0.035
+attr bracing_depth =0.035
+
+attr bracing_square_width = 10
+attr bracing_square_height = 7
+attr bracing_square_depth = 0.035
+
+// design for table
+attr table_width = 10.58
+attr table_height = 0.15
+attr table_depth = 7.198
+
+
+// design for panels
+
+
+// Main Generator Rule
+@StartRule
+SolarPanelSystem -->
+	pile
+	clamp
+	column
+# 	table
+	bracing_table_frame
+	bracing1
+	bracing2
+	bracing3
+	bracing4
+	bracing5
+# 	bracing6
+
+
+pile-->
+   // for spunpile
+   primitiveCylinder(circle_sides,spun_pile_radious,pile_height)
+   color("#606060")
+   //texture("path for texture")
+   
+clamp-->
+   // for spunpile
+   primitiveCylinder(circle_sides,spun_pile_radious+0.25,0.25)
+   t(0,pile_height-0.995,0)
+   color("#606060")
+   //texture("path for texture")
+
+column-->
+   // for column
+	primitiveCylinder(circle_sides,column_radious,column_hight) //primitiveCylinder(sides, radius, height)
+	color("#797979")
+	t(0,pile_height,0)
+   //texture()
+   
+ table-->
+ 	primitiveCube(table_width,table_height,table_depth) //primitiveCube(width, height, depth)
+#  	s('0.5, '1, '0.5)
+    rotate(abs, world, 18, 0, 0) //rotate(mode, coordSystem, xAngle, yAngle, zAngle)
+ 	t(-1.55,2.6,-9.5)
+ 	color("#797979")
+ 	
+// Bracing Rule
+ y_for_bracing = 2.55
+
+bracing1 -->
+
+    // Step 1: Create the cube representing the bracing
+    primitiveCube(bracing_width, bracing_height, bracing_depth)  // primitiveCube(width, height, depth)
+    
+    // Step 2: Translate the bracing to position it on top of the column
+    t(3.13,y_for_bracing-0.18,0)  // t(x, y, z)
+    
+    // Step 3: Rotate the bracing (example placeholder, actual rotation needs angles)
+    rotate(abs, world, 0, 26, 32.5)  // rotate(mode, coordSystem, xAngle, yAngle, zAngle)
+    
+    // Step 4: Apply a color to the bracing
+    color("#797979")  // Set the color using a hexadecimal code
+
+bracing2 -->
+    // Step 1: Create the cube representing the bracing
+    primitiveCube(bracing_width, bracing_height, bracing_depth)  // primitiveCube(width, height, depth)
+    
+    // Step 2: Translate the bracing to position it on top of the column
+    t(3.12,y_for_bracing,0)  // t(x, y, z)
+    
+    // Step 3: Rotate the bracing (example placeholder, actual rotation needs angles)
+    rotate(abs, world, 0, -35, 8.25)  // rotate(mode, coordSystem, xAngle, yAngle, zAngle)
+    
+    // Step 4: Apply a color to the bracing
+    color("#797980")  // Set the color using a hexadecimal code
+    
+bracing3 -->
+    // Step 1: Create the cube representing the bracing
+    primitiveCube(-bracing_width, -bracing_height, -bracing_depth)  // primitiveCube(width, height, depth)
+    
+    // Step 2: Translate the bracing to position it on top of the column
+    t(-3.13,y_for_bracing,0)  // t(x, y, z)
+    
+    // Step 3: Rotate the bracing (example placeholder, actual rotation needs angles)
+    rotate(abs, world, 0, 34, -9.8)  // rotate(mode, coordSystem, xAngle, yAngle, zAngle)
+    
+    // Step 4: Apply a color to the bracing
+    color("#797985")  // Set the color using a hexadecimal code
+    
+ 
+ bracing4 -->
+    // Step 1: Create the cube representing the bracing
+    primitiveCube(-bracing_width, -bracing_height, -bracing_depth)  // primitiveCube(width, height, depth)
+    
+    // Step 2: Translate the bracing to position it on top of the column
+    t(-3.13,y_for_bracing-0.18,0)  // t(x, y, z)
+    
+    // Step 3: Rotate the bracing (example placeholder, actual rotation needs angles)
+    rotate(abs, world, 0, -28, -35)  // rotate(mode, coordSystem, xAngle, yAngle, zAngle)
+    
+    // Step 4: Apply a color to the bracing
+    color("#797990")  // Set the color using a hexadecimal code
+    
+
+# -----------------------------------------------------------------------------------------------------  
+    
+bracing5 -->
+    // Step 1: Create the cube representing the bracing
+    primitiveCube(0.035,0.035,3.2)  // primitiveCube(width, height, depth)
+#     primitiveCube(bracing_depth,bracing_height,bracing_width)
+    // Step 2: Translate the bracing to position it on top of the column
+    t(-0.35,y_for_bracing-0.03,1.55)  // t(x, y, z)
+    
+    // Step 3: Rotate the bracing (example placeholder, actual rotation needs angles)
+    rotate(abs, world, -14, 0, 0)  // rotate(mode, coordSystem, xAngle, yAngle, zAngle)
+    
+    // Step 4: Apply a color to the bracing
+    color("#797995")  // Set the color using a hexadecimal code
+
+bracing6 -->
+    // Step 1: Create the cube representing the bracing
+    primitiveCube(bracing_width,bracing_height,bracing_depth)  // primitiveCube(width, height, depth)
+    
+    // Step 2: Translate the bracing to position it on top of the column
+    t(-3.13,y_for_bracing,0)  // t(x, y, z)
+    
+    // Step 3: Rotate the bracing (example placeholder, actual rotation needs angles)
+    rotate(abs, world, 0, 90,0)  // rotate(mode, coordSystem, xAngle, yAngle, zAngle)
+    
+    // Step 4: Apply a color to the bracing
+    color("#797100")  // Set the color using a hexadecimal code
+    
+    
+#     _______________________________________________________________________________________
+
+bracing_table_frame -->
+ 	primitiveCube(10,0.01,6.55) //primitiveCube(width, height, depth)
+	offset(0.15,border)
+	extrude(0.035)
+#  	s('0.5, '1, '0.5)
+    rotate(abs, world, 18, 0, 0) //rotate(mode, coordSystem, xAngle, yAngle, zAngle)
+ 	t(-1.55,2.65,-9.40)
+ 	color("#797979")
+
+
+
+	
