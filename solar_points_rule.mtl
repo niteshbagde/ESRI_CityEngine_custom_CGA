@@ -1,0 +1,20 @@
+newmtl CityEngineMaterial_1
+illum 3
+Ka 0 0 0
+Kd 0.2 0.4 0.6
+Ks 0 0 0
+Ns 0
+d 1
+Tf 1.0 1.0 1.0
+Ni 1.0
+
+newmtl CityEngineMaterial
+illum 3
+Ka 0 0 0
+Kd 0.376471 0.376471 0.376471
+Ks 0 0 0
+Ns 0
+d 1
+Tf 1.0 1.0 1.0
+Ni 1.0
+
